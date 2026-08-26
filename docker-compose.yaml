@@ -1,0 +1,40 @@
+services:
+  postgres-estoque:
+    image: postgres:16-alpine
+    container_name: korp-postgres-estoque
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: estoque_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_estoque_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d estoque_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  postgres-faturamento:
+    image: postgres:16-alpine
+    container_name: korp-postgres-faturamento
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: faturamento_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_faturamento_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d faturamento_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_estoque_data:
+  postgres_faturamento_data:
