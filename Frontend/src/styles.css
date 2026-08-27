@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  --navy-900: #1c2b45;
+  --navy-700: #2c4267;
+  --paper: #faf7f0;
+  --paper-raised: #ffffff;
+  --ink: #24283b;
+  --ink-soft: #5b6072;
+  --line: #ddd6c4;
+  --accent: #b8722f;
+  --accent-ink: #ffffff;
+  --success: #2f9e5f;
+  --success-bg: #e7f6ee;
+  --danger: #c0413f;
+  --danger-bg: #fdecec;
+
+  --font-display: 'Spectral', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--navy-900);
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+code,
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* --- Shared layout building blocks used across feature pages --- */
+
+.page-head {
+  margin-block-end: 1.75rem;
+}
+
+.page-head h2 {
+  font-size: 1.6rem;
+}
+
+.page-head__lead {
+  margin-block-start: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.panel {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-block-end: 1.5rem;
+}
+
+.panel__title {
+  font-size: 1.05rem;
+  margin-block-end: 1rem;
+}
+
+.panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.muted {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* Forms */
+
+.form-grid {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.field--grow {
+  flex: 1;
+  min-width: 200px;
+}
+
+.field input,
+.field select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  min-width: 140px;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid var(--navy-700);
+  outline-offset: 1px;
+}
+
+.field input:disabled,
+.field select:disabled {
+  opacity: 0.6;
+}
+
+/* Buttons */
+
+.btn {
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--navy-700);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn--primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--navy-700);
+  padding-inline: 0.5rem;
+}
+
+.btn--danger {
+  color: var(--danger);
+}
+
+.btn--sm {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.82rem;
+}
+
+/* Tables */
+
+.table thead th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+  padding-block-end: 0.6rem;
+}
+
+.table tbody td {
+  padding-block: 0.65rem;
+  border-bottom: 1px solid #eee7d8;
+  font-size: 0.92rem;
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table__num {
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.table__num--low {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* Status badge */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge--aberta {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.badge--fechada {
+  background: #e9ecf3;
+  color: var(--navy-700);
+}

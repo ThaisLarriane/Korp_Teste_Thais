@@ -109,3 +109,4 @@
 /home/thais/Documentos/Projetos/Korp_Teste_Thais/Estoque.Api/obj/Debug/net8.0/Estoque.Api.pdb
 /home/thais/Documentos/Projetos/Korp_Teste_Thais/Estoque.Api/obj/Debug/net8.0/Estoque.Api.genruntimeconfig.cache
 /home/thais/Documentos/Projetos/Korp_Teste_Thais/Estoque.Api/obj/Debug/net8.0/ref/Estoque.Api.dll
+/home/thais/Documentos/Projetos/Korp_Teste_Thais/Estoque.Api/obj/Debug/net8.0/Estoque.Api.sourcelink.json

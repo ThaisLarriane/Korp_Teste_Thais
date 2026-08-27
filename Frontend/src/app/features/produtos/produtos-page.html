@@ -1,0 +1,86 @@
+<section class="page-head">
+  <h2>Produtos</h2>
+  <p class="page-head__lead">Cadastre produtos para disponibilizá-los nas notas fiscais.</p>
+</section>
+
+<section class="panel">
+  <h3 class="panel__title">Novo produto</h3>
+
+  <app-alert-banner [mensagem]="erroForm()" kind="error" />
+  <app-alert-banner [mensagem]="sucessoForm()" kind="success" />
+
+  <form class="form-grid" (ngSubmit)="cadastrar()" #form="ngForm">
+    <label class="field">
+      <span>Código</span>
+      <input
+        type="text"
+        name="codigo"
+        [(ngModel)]="codigo"
+        placeholder="ex: PRD-001"
+        [disabled]="salvando()"
+        required
+      />
+    </label>
+
+    <label class="field field--grow">
+      <span>Descrição</span>
+      <input
+        type="text"
+        name="descricao"
+        [(ngModel)]="descricao"
+        placeholder="Nome do produto"
+        [disabled]="salvando()"
+        required
+      />
+    </label>
+
+    <label class="field">
+      <span>Saldo inicial</span>
+      <input
+        type="number"
+        name="saldo"
+        [(ngModel)]="saldo"
+        min="0"
+        [disabled]="salvando()"
+        required
+      />
+    </label>
+
+    <button type="submit" class="btn btn--primary" [disabled]="salvando()">
+      {{ salvando() ? 'Salvando…' : 'Cadastrar produto' }}
+    </button>
+  </form>
+</section>
+
+<section class="panel">
+  <h3 class="panel__title">Produtos cadastrados</h3>
+
+  <app-alert-banner [mensagem]="erroLista()" kind="error" />
+
+  @if (carregando()) {
+    <p class="muted">Carregando produtos…</p>
+  } @else if (produtos().length === 0) {
+    <p class="muted">Nenhum produto cadastrado ainda.</p>
+  } @else {
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Descrição</th>
+          <th class="table__num">Saldo</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (produto of produtos(); track produto.codigo) {
+          <tr>
+            <td class="mono">{{ produto.codigo }}</td>
+            <td>{{ produto.descricao }}</td>
+            <td class="table__num" [class.table__num--low]="produto.saldo === 0">
+              {{ produto.saldo }}
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

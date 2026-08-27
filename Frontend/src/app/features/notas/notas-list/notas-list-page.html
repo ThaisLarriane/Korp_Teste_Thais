@@ -1,0 +1,50 @@
+<section class="page-head">
+  <h2>Notas Fiscais</h2>
+  <p class="page-head__lead">Emita notas, adicione produtos e finalize com a impressão.</p>
+</section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h3 class="panel__title" style="margin-block-end: 0">Notas emitidas</h3>
+    <button type="button" class="btn btn--primary" (click)="novaNota()" [disabled]="criando()">
+      {{ criando() ? 'Criando…' : '+ Nova nota fiscal' }}
+    </button>
+  </div>
+
+  <app-alert-banner [mensagem]="erro()" kind="error" />
+
+  @if (carregando()) {
+    <p class="muted">Carregando notas fiscais…</p>
+  } @else if (notas().length === 0) {
+    <p class="muted">Nenhuma nota fiscal emitida ainda. Clique em "Nova nota fiscal" para começar.</p>
+  } @else {
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Número</th>
+          <th>Status</th>
+          <th>Criada em</th>
+          <th class="table__num">Itens</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (nota of notas(); track nota.numero) {
+          <tr>
+            <td class="mono">#{{ nota.numero }}</td>
+            <td>
+              <span class="badge" [class.badge--aberta]="nota.status === 'Aberta'" [class.badge--fechada]="nota.status === 'Fechada'">
+                {{ nota.status }}
+              </span>
+            </td>
+            <td>{{ nota.dataCriacao | date: 'dd/MM/yyyy HH:mm' }}</td>
+            <td class="table__num">{{ nota.itens.length }}</td>
+            <td>
+              <a class="btn btn--ghost btn--sm" [routerLink]="['/notas', nota.numero]">Abrir →</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

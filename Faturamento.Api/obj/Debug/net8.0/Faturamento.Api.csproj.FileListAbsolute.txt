@@ -116,3 +116,4 @@
 /home/thais/Documentos/Projetos/Korp_Teste_Thais/Faturamento.Api/obj/Debug/net8.0/Faturamento.Api.pdb
 /home/thais/Documentos/Projetos/Korp_Teste_Thais/Faturamento.Api/obj/Debug/net8.0/Faturamento.Api.genruntimeconfig.cache
 /home/thais/Documentos/Projetos/Korp_Teste_Thais/Faturamento.Api/obj/Debug/net8.0/ref/Faturamento.Api.dll
+/home/thais/Documentos/Projetos/Korp_Teste_Thais/Faturamento.Api/obj/Debug/net8.0/Faturamento.Api.sourcelink.json
